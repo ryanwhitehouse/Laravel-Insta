@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image;
 
 class PostController extends Controller
 {
@@ -40,6 +41,8 @@ class PostController extends Controller
         ]);
 
         $imagePath = $validatedRequest['image']->store('uploads', 'public');
+        
+        Image::make(public_path("storage/$imagePath"))->fit(350, 350)->save();
 
         Auth::user()->posts()->create([
             'caption' => $validatedRequest['caption'],
