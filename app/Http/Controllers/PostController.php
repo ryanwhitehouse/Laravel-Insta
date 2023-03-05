@@ -35,7 +35,7 @@ class PostController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function show($post)
+    public function show(Post $post)
     {
         return view('post.show', compact('post'));
     }
