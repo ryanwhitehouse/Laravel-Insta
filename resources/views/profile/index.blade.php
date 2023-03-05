@@ -11,18 +11,19 @@
                 <div><h1>{{ $user->username }}</h1></div>
                 <a href="/post/create">Add New Post</a>
             </div>
+            <a href="/profile/{{ $user->id }}/edit">Edit Profile</a>
             <div style="display: flex;">
-                <div style="padding-right: 20px"><strong>{{ $user->posts->count() }}</strong></div>
+                <div style="padding-right: 20px"><strong>{{ $user->posts->count() }}</strong> Posts</div>
                 <div style="padding-right: 20px"><strong>23k</strong> Followers</div>
                 <div><strong>212</strong> Following</div>
             </div>
             <div>
-                {{ isset($user->profile) && $user->profile->title }}
+                {{ $user->profile->title }}
             </div>
             <div>
-            {{ isset($user->profile) && $user->profile->description }}
+            {{ $user->profile->description }}
             </div>
-            <div><a href="#">{{ isset($user->profile) && $user->profile->url }}</a></div>
+            <div><a href="#">{{ $user->profile->url }}</a></div>
         </div>
     </div>
     
