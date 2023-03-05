@@ -14,9 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('profile');
+    return view('profile.index');
 });
 
 Auth::routes();
 
 Route::get('/profile/{user}', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile.show');
+Route::get('/post/create', [App\Http\Controllers\PostController::class, 'create']);

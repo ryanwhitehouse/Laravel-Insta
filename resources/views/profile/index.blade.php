@@ -7,7 +7,10 @@
             <img style="height:250px;" src="https://www.shutterstock.com/image-vector/vector-isolated-fire-emoji-600w-1173468361.jpg" alt="">
         </div>
         <div class="col-9">
-            <div><h1>{{ $user->username }}</h1></div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline;">    
+                <div><h1>{{ $user->username }}</h1></div>
+                <a href="/post/create">Add New Post</a>
+            </div>
             <div style="display: flex;">
                 <div style="padding-right: 20px"><strong>153</strong></div>
                 <div style="padding-right: 20px"><strong>23k</strong> Followers</div>

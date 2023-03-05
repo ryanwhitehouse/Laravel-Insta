@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
 
-class ProfileController extends Controller
+class PostController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -14,19 +13,16 @@ class ProfileController extends Controller
      */
     public function __construct()
     {
-
+        $this->middleware('auth');
     }
 
     /**
-     * Show the user profile.
+     * Allow the user to create a post
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index($user)
+    public function create()
     {
-        $user = User::findOrFail($user);
-        return view('profile.index', [
-            'user' => $user
-        ]);
+        return view('post.create');
     }
 }
