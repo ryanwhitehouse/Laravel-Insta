@@ -14,12 +14,12 @@
                 <div><strong>212</strong> Following</div>
             </div>
             <div>
-                FreeCodeCamp.org
+                {{ $user->profile->title }}
             </div>
             <div>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos perferendis voluptates atque nostrum consequuntur excepturi nam. Inventore voluptas tempora doloribus, recusandae officiis molestiae non ipsum velit libero aliquam veniam aut!
+            {{ $user->profile->description }}
             </div>
-            <div><a href="#">www.freecodecamp.org</a></div>
+            <div><a href="#">{{ $user->profile->url }}</a></div>
         </div>
     </div>
     <div class="row">
