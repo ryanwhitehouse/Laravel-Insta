@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 
+use App\Models\Post;
+
 class PostController extends Controller
 {
     /**
@@ -26,6 +28,18 @@ class PostController extends Controller
     public function create()
     {
         return view('post.create');
+    }
+
+    /**
+     * Renders an individual post
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function show($post)
+    {
+        return view('post.show', [
+            'post' => $post
+        ]);
     }
 
     /**
