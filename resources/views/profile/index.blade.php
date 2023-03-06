@@ -9,9 +9,16 @@
         <div class="col-9">
             <div style="display: flex; justify-content: space-between; align-items: baseline;">    
                 <div><h1>{{ $user->username }}</h1></div>
-                <a href="/post/create">Add New Post</a>
+
+                @can('update', $user->profile)
+                    <a href="/post/create">Add New Post</a>
+                @endcan
             </div>
+
+            @can('update', $user->profile)
             <a href="/profile/{{ $user->id }}/edit">Edit Profile</a>
+            @endcan
+
             <div style="display: flex;">
                 <div style="padding-right: 20px"><strong>{{ $user->posts->count() }}</strong> Posts</div>
                 <div style="padding-right: 20px"><strong>23k</strong> Followers</div>
