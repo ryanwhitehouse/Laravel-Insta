@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -48,20 +49,31 @@ class ProfileController extends Controller
     public function update(User $user)
     {      
         $this->authorize('update', $user->profile);
-        
+
         $validatedRequest = request()->validate([
             'title' => 'max:255|required',
             'description' => 'max:255|required',
             'url' => 'url',
             'image' => 'max:255',
         ]);
+        
+        if(request('image')) {
+            $imagePath = $validatedRequest['image']->store('profile', 'public');
+            
+            Image::make(public_path("storage/$imagePath"))->fit(350, 350)->save();
+    
+            $validatedRequest = array_merge(
+                $validatedRequest,
+                ['image' => $imagePath],
+            );
+        }
 
         if (is_null(Auth::user()->profile)) {
             Auth::user()->profile()->create($validatedRequest);
         } else {
             Auth::user()->profile()->update($validatedRequest);
         }
-        
+
         $currentUserId = Auth::user()->id;
         return redirect("/profile/$currentUserId");
     }

@@ -71,6 +71,15 @@
                 
                 </div>
 
+                <div class="row">
+                    <label for="image" class="col-md-4 col-form-label">{{ __('Profile Image') }}</label>
+                    <input type="file" class="form-control-file" id="image" name="image" />
+
+                    @error('image')
+                        <strong>{{ $message }}</strong>
+                    @enderror
+                </div>
+
                 <div class="row" style="padding-top: 20px">
                     <button type="submit" class="btn btn-primary">
                         {{ __('Save Changes') }}

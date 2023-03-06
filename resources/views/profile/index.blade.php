@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-3">
-            <img style="height:250px;" src="https://www.shutterstock.com/image-vector/vector-isolated-fire-emoji-600w-1173468361.jpg" alt="">
+            <img style="height:250px;" src="/storage/{{ $user->profile->image }}" alt="">
         </div>
         <div class="col-9">
             <div style="display: flex; justify-content: space-between; align-items: baseline;">    
@@ -24,13 +24,17 @@
                 <div style="padding-right: 20px"><strong>23k</strong> Followers</div>
                 <div><strong>212</strong> Following</div>
             </div>
+            @if($user->profile)
             <div>
-                {{ $user->profile->title }}
+                    {{ $user->profile->title }}
             </div>
             <div>
-            {{ $user->profile->description }}
+                    {{ $user->profile->description }}
             </div>
-            <div><a href="#">{{ $user->profile->url }}</a></div>
+            <div>
+                <a href="#">{{ $user->profile->url }}</a>
+            </div>
+            @endif
         </div>
     </div>
     
