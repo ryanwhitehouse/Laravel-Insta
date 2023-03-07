@@ -8,10 +8,15 @@
         </div>
         <div class="col-9">
             <div style="display: flex; justify-content: space-between; align-items: baseline;">    
-                <div><h1>{{ $user->username }}</h1></div>
+                <div>
+                    <h1>{{ $user->username }}</h1>
+                    @unless(Auth::user()->can('update', $user->profile))
+                    <button class="btn btn-primary">Follow</button>
+                    @endunless
+                </div>
 
                 @can('update', $user->profile)
-                    <a href="/post/create">Add New Post</a>
+                <a href="/post/create">Add New Post</a>
                 @endcan
             </div>
 
