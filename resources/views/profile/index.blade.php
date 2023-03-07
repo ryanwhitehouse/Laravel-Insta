@@ -10,7 +10,7 @@
             <div style="display: flex; justify-content: space-between; align-items: baseline;">    
                 <div>
                     <h1>{{ $user->username }}</h1>
-                    @unless(Auth::user()->can('update', $user->profile))
+                    @unless(Auth::user() && Auth::user()->can('update', $user->profile))
                     <follow-button user-id="{{$user->id}}" follows="{{$follows}}" class="btn btn-primary">Follow</follow-button>
                     @endunless
                 </div>
@@ -26,8 +26,8 @@
 
             <div style="display: flex;">
                 <div style="padding-right: 20px"><strong>{{ $user->posts->count() }}</strong> Posts</div>
-                <div style="padding-right: 20px"><strong>23k</strong> Followers</div>
-                <div><strong>212</strong> Following</div>
+                <div style="padding-right: 20px"><strong>{{ $user->profile->followers()->count() }}</strong> Followers</div>
+                <div><strong>{{ $user->following()->count() }}</strong> Following</div>
             </div>
             @if($user->profile)
             <div>
