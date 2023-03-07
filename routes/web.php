@@ -19,6 +19,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/search', [App\Http\Controllers\SearchController::class, 'show'])->name('search.show');
+Route::post('/search/results', [App\Http\Controllers\SearchController::class, 'results'])->name('search.results');
+
 Route::get('/profile/{user}', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile.show');
 Route::patch('/profile/update', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
 Route::get('/profile/{user}/edit', [App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');
