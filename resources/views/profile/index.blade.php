@@ -38,7 +38,7 @@
         </div>
     </div>
     
-    <div class="row">
+    <div class="row" style="margin-top: 20px;">
 
         @foreach ($user->posts as $post)
             <div class="col-4" style="padding-bottom: 15px;">

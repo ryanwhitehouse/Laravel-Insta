@@ -8,9 +8,12 @@
         </div>
         <div class="col-4">
             <div>
-                <h3>{{ $post->user->username }}</h3>
-
-                <p>{{ $post->caption }}</p>
+                <div style="display: flex; align-items: center">
+                    <img style="height:70px; padding-right: 15px" src="/storage/{{ $post->user->profile->image }}" alt="" />
+                <h3><a href="/profile/{{$post->user->id}}">{{ $post->user->username }}</a></h3>
+                </div>
+                <hr />
+                <p><a href="/profile/{{$post->user->id}}">{{ $post->user->username }}</a> - {{ $post->caption }}</p>
             </div>
         </div>
     </div>
