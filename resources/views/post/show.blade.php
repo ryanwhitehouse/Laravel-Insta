@@ -9,7 +9,7 @@
         <div class="col-4">
             <div>
                 <div style="display: flex; align-items: center">
-                    <img style="height:70px; padding-right: 15px" src="/storage/{{ $post->user->profile->image }}" alt="" />
+                    <img style="height:70px; padding-right: 15px" src="{{ $post->user->profile->profileImage() }}" alt="" />
                 <h3><a href="/profile/{{$post->user->id}}">{{ $post->user->username }}</a></h3>
                 </div>
                 <hr />
