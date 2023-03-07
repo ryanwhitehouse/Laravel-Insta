@@ -46,9 +46,10 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function update(User $user)
+    public function update()
     {      
-        $this->authorize('update', $user->profile);
+        $currentUser = Auth::user();
+        $this->authorize('update', $currentUser->profile);
 
         $validatedRequest = request()->validate([
             'title' => 'max:255|required',
@@ -68,13 +69,8 @@ class ProfileController extends Controller
             );
         }
 
-        if (is_null(Auth::user()->profile)) {
-            Auth::user()->profile()->create($validatedRequest);
-        } else {
-            Auth::user()->profile()->update($validatedRequest);
-        }
+        Auth::user()->profile()->update($validatedRequest);
 
-        $currentUserId = Auth::user()->id;
-        return redirect("/profile/$currentUserId");
+        return redirect("/profile/$currentUser->id");
     }
 }
