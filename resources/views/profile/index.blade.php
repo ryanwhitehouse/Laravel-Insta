@@ -11,7 +11,7 @@
                 <div>
                     <h1>{{ $user->username }}</h1>
                     @unless(Auth::user()->can('update', $user->profile))
-                    <button class="btn btn-primary">Follow</button>
+                    <follow-button user-id="{{$user->id}}" class="btn btn-primary">Follow</follow-button>
                     @endunless
                 </div>
 

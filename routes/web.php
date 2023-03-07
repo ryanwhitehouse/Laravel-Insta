@@ -19,6 +19,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::post('/follow/{user}', [App\Http\Controllers\FollowController::class, 'store'])->name('follow.store');
+
 Route::get('/search', [App\Http\Controllers\SearchController::class, 'show'])->name('search.show');
 Route::post('/search/results', [App\Http\Controllers\SearchController::class, 'results'])->name('search.results');
 
