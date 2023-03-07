@@ -27,6 +27,11 @@ import axios from 'axios';
                     this.status = !this.status;
                     console.log(result)
                 })
+                .catch(error => {
+                    if (error.response.status === 401) {
+                        window.location = '/login';
+                    }
+                })
             }
         },
 
