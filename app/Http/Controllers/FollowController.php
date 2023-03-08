@@ -18,7 +18,7 @@ class FollowController extends Controller
     }
 
     /**
-     * Show the user profile.
+     * Updates what the current user is following
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
