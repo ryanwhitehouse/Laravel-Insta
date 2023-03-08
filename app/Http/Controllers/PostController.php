@@ -31,7 +31,7 @@ class PostController extends Controller
         $following = auth()->user()->following()->pluck('profile_user.user_id');
 
         // $posts = Post::whereIn('user_id', $following)->orderby('created_at', 'DESC')->get();
-        $posts = Post::whereIn('user_id', $following)->latest()->get();
+        $posts = Post::whereIn('user_id', $following)->with('user')->latest()->get();
 
         return view('post.index', compact('posts'));
     }
