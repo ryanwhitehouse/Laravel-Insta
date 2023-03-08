@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 
 use App\Models\Post;
+use App\Models\User;
 
 class PostController extends Controller
 {
@@ -19,6 +20,22 @@ class PostController extends Controller
     {
         $this->middleware('auth');
     }
+
+     /**
+     * Renders the index view
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function index()
+    {
+        $following = auth()->user()->following()->pluck('profile_user.user_id');
+
+        // $posts = Post::whereIn('user_id', $following)->orderby('created_at', 'DESC')->get();
+        $posts = Post::whereIn('user_id', $following)->latest()->get();
+
+        return view('post.index', compact('posts'));
+    }
+
 
     /**
      * Renders the create post view
